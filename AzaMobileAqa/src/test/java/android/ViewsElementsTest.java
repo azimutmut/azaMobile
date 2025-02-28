@@ -31,34 +31,23 @@ public class ViewsElementsTest {
 
     @Test
     public void testViewsElementsCount() {
-        // Открываем "Views"
         MobileElement viewsOption = driver.findElementByAccessibilityId("Views");
         viewsOption.click();
-
-        // Находим все кликабельные элементы, которые ведут на новые страницы
         List<MobileElement> clickableItems = driver.findElementsByXPath("//android.widget.TextView[@clickable='true']");
-
         MobileElement element = (MobileElement) driver.findElement(MobileBy.AndroidUIAutomator(
                 "new UiScrollable(new UiSelector().scrollable(true))" +
                         ".scrollIntoView(new UiSelector().text(\"Splitting Touches across Views\"))"));
         List<MobileElement> clickableItems1 = driver.findElementsByXPath("//android.widget.TextView[@clickable='true']");
-
         MobileElement element1 = (MobileElement) driver.findElement(MobileBy.AndroidUIAutomator(
                 "new UiScrollable(new UiSelector().scrollable(true))" +
                         ".scrollIntoView(new UiSelector().text(\"WebView3\"))"));
         List<MobileElement> clickableItems2 = driver.findElementsByXPath("//android.widget.TextView[@clickable='true']");
-
-        // Проверяем, что их количество больше 0
         Assert.assertTrue(clickableItems.size() > 0, "Не найдено ни одного элемента в разделе Views");
-
         System.out.println(clickableItems.size());
         System.out.println(clickableItems1.size());
         System.out.println(clickableItems2.size());
         int totalClickableItems = clickableItems1.size() + clickableItems2.size()+clickableItems.size();
         System.out.println(totalClickableItems);
-
-        // Выводим количество элементов
-        System.out.println("Количество элементов в разделе Views: " + clickableItems.size()+clickableItems1.size()+clickableItems2.size());
     }
 
     @AfterClass

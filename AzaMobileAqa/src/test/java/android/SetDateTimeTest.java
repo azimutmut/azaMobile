@@ -13,7 +13,6 @@ import java.net.URL;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -48,16 +47,12 @@ public class SetDateTimeTest {
         MobileElement clickOk = driver.findElement(By.xpath("//android.widget.Button[@resource-id='android:id/button1']"));
         clickOk.click();
         List<MobileElement> buttons = driver.findElements(By.xpath("//android.widget.TextView[@clickable='true']"));
-
-
         MobileElement changeTime = driver.findElementByAccessibilityId("change the time (spinner)");
         changeTime.click();
-
         MobileElement hours = driver.findElementByAndroidUIAutomator("new UiSelector().text(\'1\')");
         hours.click();
         hours.clear();
         hours.sendKeys("11");
-
         MobileElement minutes = driver.findElementByAndroidUIAutomator("new UiSelector().text(\'2\')");
         minutes.click();
         minutes.clear();
@@ -66,9 +61,7 @@ public class SetDateTimeTest {
         dayOrNight.click();
         MobileElement stethetime = driver.findElementByAccessibilityId("android:id/button1");
         stethetime.click();
-
     }
-
     @AfterClass
     public void tearDown() {
         if (driver != null) {
@@ -76,5 +69,3 @@ public class SetDateTimeTest {
         }
     }
 }
-
-
